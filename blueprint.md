@@ -1,28 +1,50 @@
-# Fine Tracker Blueprint
+# Fine Tracker Application Blueprint
 
 ## Overview
 
-A simple application to track fines for a group of users. Users can be added and removed, rules can be created, and fines can be assigned to users for breaking rules.
+Fine Tracker is a simple web application for managing fines within a community or organization. It allows for the creation of users, the definition of rules with associated fines, and the assignment of fines to users who break those rules.
 
-## Project Style, Design, and Features
+## Project Structure & Features
 
-*   **Framework:** Angular v20+
-*   **Architecture:** Standalone Components
-*   **State Management:** Signals
-*   **Styling:** Modern CSS with a clean and simple design.
-*   **Components:**
-    *   `AppComponent`: The root component of the application.
-    *   `UsersComponent`: Displays a list of users and allows for adding and removing them.
-    *   `RulesComponent`: Displays a list of rules and allows for adding, editing, and deleting them.
-    *   `FinesComponent`: Displays a list of fines that have been assigned to users.
+### Core Technologies
 
-## Current Plan
+- **Framework:** Angular v20+
+- **State Management:** Angular Signals
+- **Component Architecture:** 100% Standalone Components
+- **Styling:** Bootstrap 5
+- **Control Flow:** Native `@` syntax (`@if`, `@for`, `@switch`)
 
-### Phase 4: Fines Management
+### Implemented Features
 
-1.  **Create a `FineService` to manage fine data.** This service will use signals to hold the list of fines.
-2.  **Create a `Fine` interface.** This will define the structure of a fine, linking a user to a rule.
-3.  **Implement the `FinesComponent`:**
-    *   Display a list of all fines, showing the user's name, the rule description, and the fine amount.
-    *   Add a form to assign a new fine to a user for a specific rule.
-4.  **Style the `FinesComponent`** for a clean and readable presentation.
+- **User Management**
+  - View a list of all users.
+  - Add new users to the system.
+  - Remove existing users.
+
+- **Rule Management**
+  - View a list of all rules and their corresponding fine amounts.
+  - Add new rules with a description and fine amount.
+  - Remove existing rules.
+
+- **Fine Management**
+  - View a detailed list of all assigned fines, including the user's name, the rule they broke, and the fine amount.
+  - Assign new fines to users for specific rule violations.
+
+### Design and Style
+
+- **Layout:** A clean, modern interface using Bootstrap for a responsive and consistent look and feel.
+- **Navigation:** A top navigation bar allows for easy switching between the Users, Rules, and Fines sections.
+- **Interactivity:** Forms and buttons are styled with Bootstrap for a clear and intuitive user experience.
+
+## Current Task: Add Bootstrap Styling
+
+### Plan & Steps
+
+1.  **[COMPLETED]** Add the Bootstrap CSS CDN link to `src/index.html`.
+2.  **[COMPLETED]** Update `src/app/app.component.ts` to include a Bootstrap navbar for navigation.
+3.  **[COMPLETED]** Refactor `src/app/users/users.ts` to use Bootstrap form and list-group classes.
+4.  **[COMPLETED]** Refactor `src/app/rules/rules.ts` to use Bootstrap form and list-group classes.
+5.  **[COMPLETED]** Refactor `src/app/fines/fines.ts` to use Bootstrap form, select, and list-group classes.
+6.  **[COMPLETED]** Run `ng build` and fix any resulting compilation errors.
+    - **[COMPLETED]** Imported `RouterOutlet` and `RouterLink` into `AppComponent` to resolve template errors.
+7.  **[COMPLETED]** Final build successful. Styling applied.

@@ -6,40 +6,23 @@ import { RuleService } from '../rule';
   template: `
     <h2>Rules</h2>
 
-    <form (submit)="addRule($event)">
-      <input type="text" name="description" placeholder="Enter description">
-      <input type="number" name="fineAmount" placeholder="Enter fine amount">
-      <button type="submit">Add Rule</button>
+    <form (submit)="addRule($event)" class="mb-3">
+      <div class="input-group">
+        <input type="text" class="form-control" name="description" placeholder="Enter description">
+        <input type="number" class="form-control" name="fineAmount" placeholder="Enter fine amount">
+        <button class="btn btn-primary" type="submit">Add Rule</button>
+      </div>
     </form>
 
-    <ul>
+    <ul class="list-group">
       @for (rule of ruleService.getRules()(); track rule.id) {
-        <li>
-          <span>{{ rule.description }} - $ {{ rule.fineAmount }}</span>
-          <button (click)="removeRule(rule.id)">Remove</button>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          {{ rule.description }} - $ {{ rule.fineAmount }}
+          <button class="btn btn-danger btn-sm" (click)="removeRule(rule.id)">Remove</button>
         </li>
       }
     </ul>
   `,
-  styles: [`
-    form {
-      margin-bottom: 1rem;
-    }
-    input {
-      margin-right: 0.5rem;
-    }
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    li {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.5rem;
-      border-bottom: 1px solid #ccc;
-    }
-  `],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RulesComponent {

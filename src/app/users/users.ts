@@ -6,39 +6,22 @@ import { UserService } from '../user';
   template: `
     <h2>Users</h2>
 
-    <form (submit)="addUser($event)">
-      <input type="text" name="name" placeholder="Enter name" #nameInput>
-      <button type="submit">Add User</button>
+    <form (submit)="addUser($event)" class="mb-3">
+      <div class="input-group">
+        <input type="text" class="form-control" name="name" placeholder="Enter name">
+        <button class="btn btn-primary" type="submit">Add User</button>
+      </div>
     </form>
 
-    <ul>
+    <ul class="list-group">
       @for (user of userService.getUsers()(); track user.id) {
-        <li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
           {{ user.name }}
-          <button (click)="removeUser(user.id)">Remove</button>
+          <button class="btn btn-danger btn-sm" (click)="removeUser(user.id)">Remove</button>
         </li>
       }
     </ul>
   `,
-  styles: [`
-    form {
-      margin-bottom: 1rem;
-    }
-    input {
-      margin-right: 0.5rem;
-    }
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    li {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.5rem;
-      border-bottom: 1px solid #ccc;
-    }
-  `],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersComponent {
@@ -46,11 +29,13 @@ export class UsersComponent {
 
   addUser(event: Event) {
     event.preventDefault();
-    const input = (event.target as HTMLFormElement).elements.namedItem('name') as HTMLInputElement;
-    const name = input.value;
+    const form = event.target as HTMLFormElement;
+    const nameInput = form.elements.namedItem('name') as HTMLInputElement;
+    const name = nameInput.value;
+
     if (name) {
       this.userService.addUser(name);
-      input.value = '';
+      form.reset();
     }
   }
 

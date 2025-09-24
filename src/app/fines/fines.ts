@@ -8,44 +8,30 @@ import { RuleService } from '../rule';
   template: `
     <h2>Fines</h2>
 
-    <form (submit)="addFine($event)">
-      <select name="userId">
-        @for (user of userService.getUsers()(); track user.id) {
-          <option [value]="user.id">{{ user.name }}</option>
-        }
-      </select>
-      <select name="ruleId">
-        @for (rule of ruleService.getRules()(); track rule.id) {
-          <option [value]="rule.id">{{ rule.description }}</option>
-        }
-      </select>
-      <button type="submit">Add Fine</button>
+    <form (submit)="addFine($event)" class="mb-3">
+      <div class="input-group">
+        <select class="form-select" name="userId">
+          @for (user of userService.getUsers()(); track user.id) {
+            <option [value]="user.id">{{ user.name }}</option>
+          }
+        </select>
+        <select class="form-select" name="ruleId">
+          @for (rule of ruleService.getRules()(); track rule.id) {
+            <option [value]="rule.id">{{ rule.description }}</option>
+          }
+        </select>
+        <button class="btn btn-primary" type="submit">Add Fine</button>
+      </div>
     </form>
 
-    <ul>
+    <ul class="list-group">
       @for (fine of fineDetails(); track fine.id) {
-        <li>
-          <span>{{ fine.userName }} - {{ fine.ruleDescription }} - $ {{ fine.fineAmount }}</span>
+        <li class="list-group-item">
+          {{ fine.userName }} - {{ fine.ruleDescription }} - $ {{ fine.fineAmount }}
         </li>
       }
     </ul>
   `,
-  styles: [`
-    form {
-      margin-bottom: 1rem;
-    }
-    select {
-      margin-right: 0.5rem;
-    }
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    li {
-      padding: 0.5rem;
-      border-bottom: 1px solid #ccc;
-    }
-  `],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FinesComponent {

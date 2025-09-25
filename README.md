@@ -2,6 +2,14 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.2.
 
+## Firebase setup (Auth)
+
+- Copy `src/assets/firebase-config.example.json` to `src/assets/firebase-config.json` and fill with your Firebase project's client config.
+- The real `firebase-config.json` is gitignored to keep your credentials out of the repository.
+- Auth uses Google sign-in by default. You can switch/add providers in `src/app/auth/auth.service.ts`.
+
+Routes are protected by `authGuard` and `roleGuard`. Replace the placeholder role logic with your Firestore/custom-claims based solution.
+
 ## Development server
 
 To start a local development server, run:

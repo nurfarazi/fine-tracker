@@ -37,6 +37,14 @@ yarn-error.log
 testem.log
 /typings
 
+# Firebase and environment configs (do not commit real credentials)
+/firebase.json
+/.firebaserc
+/firebase-debug.log
+.env
+.env.*
+src/assets/firebase-config.json
+
 # System files
 .DS_Store
 Thumbs.db

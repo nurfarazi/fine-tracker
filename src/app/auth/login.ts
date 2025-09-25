@@ -5,7 +5,6 @@ import { AuthService } from './auth.service';
 @Component({
   standalone: true,
   selector: 'app-login',
-  imports: [RouterLink],
   template: `
     <div class="container py-5">
       <h2>Sign in</h2>
